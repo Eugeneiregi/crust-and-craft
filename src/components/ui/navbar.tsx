@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
+import { CartDrawer } from "@/components/CartDrawer";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { state } = useCart();
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
@@ -36,16 +39,20 @@ export function Navbar() {
 
           {/* Cart and Menu */}
           <div className="flex items-center space-x-4">
-            <Button
-              variant="outline"
-              size="icon"
-              className="relative"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center animate-glow">
-                0
-              </span>
-            </Button>
+            <CartDrawer>
+              <Button
+                variant="outline"
+                size="icon"
+                className="relative"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                {state.items.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center animate-glow">
+                    {state.items.reduce((total, item) => total + item.quantity, 0)}
+                  </span>
+                )}
+              </Button>
+            </CartDrawer>
 
             {/* Mobile menu button */}
             <Button
