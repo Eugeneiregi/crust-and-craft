@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { PizzaCustomizationModal } from "./PizzaCustomizationModal";
 
 const featuredPizzas = [
   {
@@ -48,6 +50,19 @@ const featuredPizzas = [
 ];
 
 export function MenuPreview() {
+  const [selectedPizza, setSelectedPizza] = useState<typeof featuredPizzas[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCustomize = (pizza: typeof featuredPizzas[0]) => {
+    setSelectedPizza(pizza);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPizza(null);
+  };
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -98,9 +113,13 @@ export function MenuPreview() {
                   <span className="text-2xl font-bold text-primary">
                     ${pizza.price}
                   </span>
-                  <Button size="sm" className="btn-primary">
+                  <Button 
+                    size="sm" 
+                    className="btn-primary"
+                    onClick={() => handleCustomize(pizza)}
+                  >
                     <Plus className="h-4 w-4 mr-1" />
-                    Add
+                    Customize
                   </Button>
                 </div>
               </div>
@@ -117,6 +136,12 @@ export function MenuPreview() {
           </Link>
         </div>
       </div>
+
+      <PizzaCustomizationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        pizza={selectedPizza}
+      />
     </section>
   );
 }

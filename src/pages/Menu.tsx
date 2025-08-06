@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Star, Filter } from "lucide-react";
+import { PizzaCustomizationModal } from "@/components/PizzaCustomizationModal";
 
 const menuItems = {
   classic: [
@@ -90,6 +91,18 @@ const menuItems = {
 
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState("classic");
+  const [selectedPizza, setSelectedPizza] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCustomize = (pizza: any) => {
+    setSelectedPizza(pizza);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPizza(null);
+  };
 
   const renderPizzaCard = (pizza: any) => (
     <Card key={pizza.id} className="card-hover overflow-hidden group">
@@ -121,7 +134,10 @@ export default function Menu() {
           <span className="text-2xl font-bold text-primary">
             ${pizza.price}
           </span>
-          <Button className="btn-primary">
+          <Button 
+            className="btn-primary"
+            onClick={() => handleCustomize(pizza)}
+          >
             <Plus className="h-4 w-4 mr-1" />
             Customize
           </Button>
@@ -174,6 +190,12 @@ export default function Menu() {
           </Tabs>
         </div>
       </section>
+
+      <PizzaCustomizationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        pizza={selectedPizza}
+      />
 
       <Footer />
     </div>
