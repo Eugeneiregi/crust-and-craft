@@ -5,6 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Plus, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PizzaCustomizationModal } from "./PizzaCustomizationModal";
+import margheritaImage from "@/assets/margherita-pizza.jpg";
+import pepperoniImage from "@/assets/pepperoni-pizza.jpg";
+import supremeImage from "@/assets/supreme-pizza.jpg";
+import hawaiianImage from "@/assets/hawaiian-pizza.jpg";
 
 const featuredPizzas = [
   {
@@ -12,7 +16,7 @@ const featuredPizzas = [
     name: "Margherita Classic",
     description: "Fresh mozzarella, tomato sauce, basil, olive oil",
     price: 16.99,
-    image: "🍕",
+    image: margheritaImage,
     rating: 4.8,
     isPopular: true,
     category: "Classic"
@@ -22,7 +26,7 @@ const featuredPizzas = [
     name: "Pepperoni Supreme",
     description: "Premium pepperoni, mozzarella, tomato sauce",
     price: 19.99,
-    image: "🍕",
+    image: pepperoniImage,
     rating: 4.9,
     isPopular: true,
     category: "Classic"
@@ -32,17 +36,17 @@ const featuredPizzas = [
     name: "Veggie Garden",
     description: "Bell peppers, mushrooms, onions, olives, tomatoes",
     price: 18.99,
-    image: "🍕",
+    image: supremeImage,
     rating: 4.6,
     isPopular: false,
     category: "Vegetarian"
   },
   {
     id: 4,
-    name: "Meat Lovers",
-    description: "Pepperoni, sausage, ham, bacon, ground beef",
-    price: 24.99,
-    image: "🍕",
+    name: "Hawaiian Paradise",
+    description: "Ham, pineapple, mozzarella cheese, tomato sauce",
+    price: 21.99,
+    image: hawaiianImage,
     rating: 4.7,
     isPopular: true,
     category: "Specialty"
@@ -81,10 +85,12 @@ export function MenuPreview() {
           {featuredPizzas.map((pizza) => (
             <Card key={pizza.id} className="card-hover bg-card border-border overflow-hidden group">
               {/* Pizza Image */}
-              <div className="relative p-8 bg-gradient-card">
-                <div className="text-8xl text-center animate-float group-hover:scale-110 transition-transform duration-300">
-                  {pizza.image}
-                </div>
+              <div className="relative h-64 bg-gradient-card overflow-hidden">
+                <img 
+                  src={pizza.image} 
+                  alt={pizza.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
                 {pizza.isPopular && (
                   <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
                     Popular
