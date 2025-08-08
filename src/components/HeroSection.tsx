@@ -25,7 +25,7 @@ export function HeroSection() {
             {/* Main Heading */}
             <div>
               <h1 className="text-6xl lg:text-8xl font-bold mb-4 leading-none">
-                <span className="text-primary/20 block text-4xl lg:text-6xl font-normal mb-2">AUTHENTIC</span>
+                <span className="text-primary/20 block text-4xl lg:text-6xl font-normal mb-2">IREGI</span>
                 <span className="block">PIZZA</span>
                 <span className="text-primary block">DELIVERY</span>
               </h1>
@@ -47,6 +47,25 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
+
+            {/* Quick Links */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link to="/services" className="text-sm text-primary hover:text-primary/80 transition-colors underline">
+                Services
+              </Link>
+              <Link to="/locations" className="text-sm text-primary hover:text-primary/80 transition-colors underline">
+                Locations
+              </Link>
+              <Link to="/careers" className="text-sm text-primary hover:text-primary/80 transition-colors underline">
+                Careers
+              </Link>
+              <Link to="/about" className="text-sm text-primary hover:text-primary/80 transition-colors underline">
+                About Us
+              </Link>
+              <Link to="/contact" className="text-sm text-primary hover:text-primary/80 transition-colors underline">
+                Contact
+              </Link>
+            </div>
 
             {/* Quick Stats */}
             <div className="flex gap-8 pt-4">
