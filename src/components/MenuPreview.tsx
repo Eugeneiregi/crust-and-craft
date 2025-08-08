@@ -15,7 +15,7 @@ const featuredPizzas = [
     id: 1,
     name: "Margherita Classic",
     description: "Fresh mozzarella, tomato sauce, basil, olive oil",
-    price: 16.99,
+    price: 1699,
     image: margheritaImage,
     rating: 4.8,
     isPopular: true,
@@ -25,7 +25,7 @@ const featuredPizzas = [
     id: 2,
     name: "Pepperoni Supreme",
     description: "Premium pepperoni, mozzarella, tomato sauce",
-    price: 19.99,
+    price: 1999,
     image: pepperoniImage,
     rating: 4.9,
     isPopular: true,
@@ -35,7 +35,7 @@ const featuredPizzas = [
     id: 3,
     name: "Veggie Garden",
     description: "Bell peppers, mushrooms, onions, olives, tomatoes",
-    price: 18.99,
+    price: 1899,
     image: supremeImage,
     rating: 4.6,
     isPopular: false,
@@ -45,7 +45,7 @@ const featuredPizzas = [
     id: 4,
     name: "Hawaiian Paradise",
     description: "Ham, pineapple, mozzarella cheese, tomato sauce",
-    price: 21.99,
+    price: 2199,
     image: hawaiianImage,
     rating: 4.7,
     isPopular: true,
@@ -117,7 +117,7 @@ export function MenuPreview() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-primary">
-                    ${pizza.price}
+                    KSH {pizza.price}
                   </span>
                   <Button 
                     size="sm" 

@@ -7,6 +7,14 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Star, Filter } from "lucide-react";
 import { PizzaCustomizationModal } from "@/components/PizzaCustomizationModal";
+import margheritaImage from "@/assets/margherita-pizza.jpg";
+import pepperoniImage from "@/assets/pepperoni-pizza.jpg";
+import hawaiianImage from "@/assets/hawaiian-pizza.jpg";
+import veggieSupremeImage from "@/assets/veggie-supreme-pizza.jpg";
+import mediterraneanImage from "@/assets/mediterranean-pizza.jpg";
+import meatLoversImage from "@/assets/meat-lovers-pizza.jpg";
+import bbqChickenImage from "@/assets/bbq-chicken-pizza.jpg";
+import whiteTruffleImage from "@/assets/white-truffle-pizza.jpg";
 
 const menuItems = {
   classic: [
@@ -14,8 +22,8 @@ const menuItems = {
       id: 1,
       name: "Margherita",
       description: "Fresh mozzarella, tomato sauce, basil, olive oil",
-      price: 16.99,
-      image: "🍕",
+      price: 1699,
+      image: margheritaImage,
       rating: 4.8,
       isVegetarian: true
     },
@@ -23,8 +31,8 @@ const menuItems = {
       id: 2,
       name: "Pepperoni",
       description: "Premium pepperoni, mozzarella, tomato sauce",
-      price: 19.99,
-      image: "🍕",
+      price: 1999,
+      image: pepperoniImage,
       rating: 4.9,
       isVegetarian: false
     },
@@ -32,8 +40,8 @@ const menuItems = {
       id: 3,
       name: "Hawaiian",
       description: "Ham, pineapple, mozzarella, tomato sauce",
-      price: 21.99,
-      image: "🍕",
+      price: 2199,
+      image: hawaiianImage,
       rating: 4.5,
       isVegetarian: false
     }
@@ -43,8 +51,8 @@ const menuItems = {
       id: 4,
       name: "Veggie Supreme",
       description: "Bell peppers, mushrooms, onions, olives, tomatoes",
-      price: 18.99,
-      image: "🍕",
+      price: 1899,
+      image: veggieSupremeImage,
       rating: 4.6,
       isVegetarian: true
     },
@@ -52,8 +60,8 @@ const menuItems = {
       id: 5,
       name: "Mediterranean",
       description: "Feta cheese, olives, sun-dried tomatoes, spinach",
-      price: 20.99,
-      image: "🍕",
+      price: 2099,
+      image: mediterraneanImage,
       rating: 4.7,
       isVegetarian: true
     }
@@ -63,8 +71,8 @@ const menuItems = {
       id: 6,
       name: "Meat Lovers",
       description: "Pepperoni, sausage, ham, bacon, ground beef",
-      price: 24.99,
-      image: "🍕",
+      price: 2499,
+      image: meatLoversImage,
       rating: 4.7,
       isVegetarian: false
     },
@@ -72,8 +80,8 @@ const menuItems = {
       id: 7,
       name: "BBQ Chicken",
       description: "Grilled chicken, BBQ sauce, red onions, cilantro",
-      price: 22.99,
-      image: "🍕",
+      price: 2299,
+      image: bbqChickenImage,
       rating: 4.8,
       isVegetarian: false
     },
@@ -81,8 +89,8 @@ const menuItems = {
       id: 8,
       name: "White Truffle",
       description: "Truffle oil, ricotta, mozzarella, arugula",
-      price: 28.99,
-      image: "🍕",
+      price: 2899,
+      image: whiteTruffleImage,
       rating: 4.9,
       isVegetarian: true
     }
@@ -106,10 +114,12 @@ export default function Menu() {
 
   const renderPizzaCard = (pizza: any) => (
     <Card key={pizza.id} className="card-hover overflow-hidden group">
-      <div className="relative p-6 bg-gradient-card">
-        <div className="text-6xl text-center animate-float group-hover:scale-110 transition-transform duration-300">
-          {pizza.image}
-        </div>
+      <div className="relative h-64 bg-gradient-card overflow-hidden">
+        <img 
+          src={pizza.image} 
+          alt={pizza.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+        />
         {pizza.isVegetarian && (
           <Badge className="absolute top-4 right-4 bg-success text-success-foreground">
             Vegetarian
@@ -132,7 +142,7 @@ export default function Menu() {
         
         <div className="flex items-center justify-between">
           <span className="text-2xl font-bold text-primary">
-            ${pizza.price}
+            KSH {pizza.price}
           </span>
           <Button 
             className="btn-primary"
