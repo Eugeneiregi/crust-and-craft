@@ -37,22 +37,16 @@ export function HeroSection() {
               Experience the taste of Italy delivered to your door in under 30 minutes.
             </p>
 
-            {/* Price Display */}
-            <div className="bg-card rounded-xl p-6 border border-border max-w-sm">
-              <div className="text-sm text-muted-foreground mb-2">Starting from</div>
-              <div className="text-4xl font-bold text-primary mb-4">$16.99</div>
-              
-              {/* CTA Button */}
-              <Link to="/menu">
-                <Button
-                  size="lg"
-                  className="btn-primary group w-full text-lg py-6"
-                >
-                  Order Now
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
+            {/* CTA Button */}
+            <Link to="/menu">
+              <Button
+                size="lg"
+                className="btn-primary group text-lg py-6 px-8"
+              >
+                Order Now
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
 
             {/* Quick Stats */}
             <div className="flex gap-8 pt-4">
@@ -79,7 +73,8 @@ export function HeroSection() {
                 <img
                   src={heroImage}
                   alt="Delicious Pizza"
-                  className="w-full max-w-lg h-auto drop-shadow-2xl animate-float"
+                  className="w-96 h-96 lg:w-[500px] lg:h-[500px] object-cover rounded-full drop-shadow-2xl animate-spin"
+                  style={{ animationDuration: '20s' }}
                 />
               </div>
               
