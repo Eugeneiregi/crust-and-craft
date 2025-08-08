@@ -134,7 +134,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                       <div className="flex justify-between">
                         <span>{size.name}</span>
                         <span className="text-primary font-medium">
-                          ${(pizza.price * size.priceMultiplier).toFixed(2)}
+                          KSH {(pizza.price * size.priceMultiplier / 100).toFixed(0)}
                         </span>
                       </div>
                     </Label>
@@ -154,7 +154,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                       <div className="flex justify-between">
                         <span>{crust.name}</span>
                         <span className="text-primary font-medium">
-                          {crust.price > 0 ? `+$${crust.price.toFixed(2)}` : "Free"}
+                          {crust.price > 0 ? `+KSH ${(crust.price * 100).toFixed(0)}` : "Free"}
                         </span>
                       </div>
                     </Label>
@@ -181,7 +181,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                           <Label htmlFor={topping.id} className="flex-1 cursor-pointer">
                             <div className="flex justify-between">
                               <span>{topping.name}</span>
-                              <span className="text-primary font-medium">+${topping.price.toFixed(2)}</span>
+                              <span className="text-primary font-medium">+KSH {(topping.price * 100).toFixed(0)}</span>
                             </div>
                           </Label>
                         </div>
@@ -199,7 +199,11 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
             <Card className="p-6">
               <h3 className="text-lg font-semibold mb-4">Your Pizza</h3>
               <div className="text-center mb-4">
-                <div className="text-6xl mb-2">{pizza.image}</div>
+                <img 
+                  src={pizza.image} 
+                  alt={pizza.name}
+                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-2"
+                />
                 <h4 className="font-semibold">{pizza.name}</h4>
                 <p className="text-sm text-muted-foreground">
                   {selectedSizeData?.name} • {selectedCrustData?.name}
@@ -249,18 +253,18 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Base Price ({selectedSizeData?.name}):</span>
-                      <span>${basePrice.toFixed(2)}</span>
+                      <span>KSH {(basePrice / 100).toFixed(0)}</span>
                     </div>
                     {crustPrice > 0 && (
                       <div className="flex justify-between">
                         <span>Crust ({selectedCrustData?.name}):</span>
-                        <span>+${crustPrice.toFixed(2)}</span>
+                        <span>+KSH {(crustPrice * 100 / 100).toFixed(0)}</span>
                       </div>
                     )}
                     {toppingsPrice > 0 && (
                       <div className="flex justify-between">
                         <span>Toppings:</span>
-                        <span>+${toppingsPrice.toFixed(2)}</span>
+                        <span>+KSH {(toppingsPrice * 100 / 100).toFixed(0)}</span>
                       </div>
                     )}
                     {quantity > 1 && (
@@ -273,14 +277,14 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                   <div className="border-t pt-2 mt-2">
                     <div className="flex justify-between text-lg font-bold">
                       <span>Total:</span>
-                      <span className="text-primary">${totalPrice.toFixed(2)}</span>
+                      <span className="text-primary">KSH {(totalPrice / 100).toFixed(0)}</span>
                     </div>
                   </div>
                 </div>
 
                 <Button onClick={handleAddToCart} className="w-full btn-primary" size="lg">
                   <ShoppingCart className="h-4 w-4 mr-2" />
-                  Add to Cart - ${totalPrice.toFixed(2)}
+                  Add to Cart - KSH {(totalPrice / 100).toFixed(0)}
                 </Button>
               </div>
             </Card>

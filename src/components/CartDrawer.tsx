@@ -23,10 +23,7 @@ export function CartDrawer({ children }: CartDrawerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(price);
+    return `KSH ${(price / 100).toFixed(0)}`;
   };
 
   const getToppingsList = (toppings: string[]) => {
