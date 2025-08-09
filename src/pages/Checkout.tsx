@@ -13,6 +13,28 @@ export function Checkout() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const paymentNumber = "0712345678";
 
+  // Debug: Log cart state
+  console.log("Cart state in checkout:", state);
+
+  // If cart is empty, redirect back to menu
+  if (state.items.length === 0 && !orderPlaced) {
+    return (
+      <div className="min-h-screen bg-background py-8">
+        <div className="container max-w-2xl mx-auto px-4">
+          <Card className="p-8 text-center">
+            <h1 className="text-2xl font-bold mb-4">Your cart is empty</h1>
+            <p className="text-muted-foreground mb-6">
+              Add some items to your cart before proceeding to checkout.
+            </p>
+            <Link to="/menu">
+              <Button>Browse Menu</Button>
+            </Link>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
   const formatPrice = (price: number) => {
     return `KSH ${(price / 100).toFixed(0)}`;
   };
