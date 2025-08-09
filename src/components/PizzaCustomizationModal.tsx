@@ -87,7 +87,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
     const cartItem = {
       id: `${pizza.id}-${selectedSize}-${selectedCrust}-${selectedToppings.join(',')}-${Date.now()}`,
       name: pizza.name,
-      price: basePrice + crustPrice + toppingsPrice,
+      price: Math.round((basePrice + crustPrice + toppingsPrice) * 100), // Convert to cents
       quantity,
       size: selectedSize as "small" | "medium" | "large" | "xlarge",
       crust: selectedCrustData?.name || "Thin Crust",
