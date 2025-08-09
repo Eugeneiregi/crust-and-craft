@@ -135,8 +135,8 @@ export function CartDrawer({ children }: CartDrawerProps) {
                   Continue Shopping
                 </Button>
               </DrawerClose>
-              <Button className="flex-1 bg-gradient-warm hover:opacity-90">
-                Proceed to Checkout
+              <Button className="flex-1 bg-gradient-warm hover:opacity-90" asChild>
+                <a href="/checkout">Proceed to Checkout</a>
               </Button>
             </div>
           </DrawerFooter>
