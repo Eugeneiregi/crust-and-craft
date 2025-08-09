@@ -35,25 +35,25 @@ const sizes = [
 
 const crusts = [
   { id: "thin", name: "Thin Crust", price: 0 },
-  { id: "thick", name: "Thick Crust", price: 2 },
-  { id: "stuffed", name: "Cheese Stuffed", price: 4 },
-  { id: "gluten-free", name: "Gluten Free", price: 3 }
+  { id: "thick", name: "Thick Crust", price: 200 },
+  { id: "stuffed", name: "Cheese Stuffed", price: 400 },
+  { id: "gluten-free", name: "Gluten Free", price: 300 }
 ];
 
 const toppings = [
-  { id: "pepperoni", name: "Pepperoni", price: 2.5, category: "Meat" },
-  { id: "sausage", name: "Italian Sausage", price: 2.5, category: "Meat" },
-  { id: "ham", name: "Ham", price: 2.0, category: "Meat" },
-  { id: "bacon", name: "Bacon", price: 3.0, category: "Meat" },
-  { id: "chicken", name: "Grilled Chicken", price: 3.5, category: "Meat" },
-  { id: "mushrooms", name: "Mushrooms", price: 1.5, category: "Vegetable" },
-  { id: "peppers", name: "Bell Peppers", price: 1.5, category: "Vegetable" },
-  { id: "onions", name: "Red Onions", price: 1.0, category: "Vegetable" },
-  { id: "olives", name: "Black Olives", price: 2.0, category: "Vegetable" },
-  { id: "tomatoes", name: "Fresh Tomatoes", price: 1.5, category: "Vegetable" },
-  { id: "spinach", name: "Fresh Spinach", price: 2.0, category: "Vegetable" },
-  { id: "extra-cheese", name: "Extra Cheese", price: 2.5, category: "Cheese" },
-  { id: "feta", name: "Feta Cheese", price: 3.0, category: "Cheese" }
+  { id: "pepperoni", name: "Pepperoni", price: 250, category: "Meat" },
+  { id: "sausage", name: "Italian Sausage", price: 250, category: "Meat" },
+  { id: "ham", name: "Ham", price: 200, category: "Meat" },
+  { id: "bacon", name: "Bacon", price: 300, category: "Meat" },
+  { id: "chicken", name: "Grilled Chicken", price: 350, category: "Meat" },
+  { id: "mushrooms", name: "Mushrooms", price: 150, category: "Vegetable" },
+  { id: "peppers", name: "Bell Peppers", price: 150, category: "Vegetable" },
+  { id: "onions", name: "Red Onions", price: 100, category: "Vegetable" },
+  { id: "olives", name: "Black Olives", price: 200, category: "Vegetable" },
+  { id: "tomatoes", name: "Fresh Tomatoes", price: 150, category: "Vegetable" },
+  { id: "spinach", name: "Fresh Spinach", price: 200, category: "Vegetable" },
+  { id: "extra-cheese", name: "Extra Cheese", price: 250, category: "Cheese" },
+  { id: "feta", name: "Feta Cheese", price: 300, category: "Cheese" }
 ];
 
 export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomizationModalProps) {
@@ -134,7 +134,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                       <div className="flex justify-between">
                         <span>{size.name}</span>
                         <span className="text-primary font-medium">
-                          KSH {(pizza.price * size.priceMultiplier / 100).toFixed(0)}
+                          KSH {(pizza.price * size.priceMultiplier).toFixed(0)}
                         </span>
                       </div>
                     </Label>
@@ -154,7 +154,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                       <div className="flex justify-between">
                         <span>{crust.name}</span>
                         <span className="text-primary font-medium">
-                          {crust.price > 0 ? `+KSH ${(crust.price * 100).toFixed(0)}` : "Free"}
+                          {crust.price > 0 ? `+KSH ${crust.price.toFixed(0)}` : "Free"}
                         </span>
                       </div>
                     </Label>
@@ -181,7 +181,7 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                           <Label htmlFor={topping.id} className="flex-1 cursor-pointer">
                             <div className="flex justify-between">
                               <span>{topping.name}</span>
-                              <span className="text-primary font-medium">+KSH {(topping.price * 100).toFixed(0)}</span>
+                              <span className="text-primary font-medium">+KSH {topping.price.toFixed(0)}</span>
                             </div>
                           </Label>
                         </div>
@@ -253,18 +253,18 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Base Price ({selectedSizeData?.name}):</span>
-                      <span>KSH {(basePrice / 100).toFixed(0)}</span>
+                      <span>KSH {basePrice.toFixed(0)}</span>
                     </div>
                     {crustPrice > 0 && (
                       <div className="flex justify-between">
                         <span>Crust ({selectedCrustData?.name}):</span>
-                        <span>+KSH {(crustPrice * 100 / 100).toFixed(0)}</span>
+                        <span>+KSH {crustPrice.toFixed(0)}</span>
                       </div>
                     )}
                     {toppingsPrice > 0 && (
                       <div className="flex justify-between">
                         <span>Toppings:</span>
-                        <span>+KSH {(toppingsPrice * 100 / 100).toFixed(0)}</span>
+                        <span>+KSH {toppingsPrice.toFixed(0)}</span>
                       </div>
                     )}
                     {quantity > 1 && (
@@ -277,14 +277,14 @@ export function PizzaCustomizationModal({ isOpen, onClose, pizza }: PizzaCustomi
                   <div className="border-t pt-2 mt-2">
                     <div className="flex justify-between text-lg font-bold">
                       <span>Total:</span>
-                      <span className="text-primary">KSH {(totalPrice / 100).toFixed(0)}</span>
+                      <span className="text-primary">KSH {totalPrice.toFixed(0)}</span>
                     </div>
                   </div>
                 </div>
 
                 <Button onClick={handleAddToCart} className="w-full btn-primary" size="lg">
                   <ShoppingCart className="h-4 w-4 mr-2" />
-                  Add to Cart - KSH {(totalPrice / 100).toFixed(0)}
+                  Add to Cart - KSH {totalPrice.toFixed(0)}
                 </Button>
               </div>
             </Card>
