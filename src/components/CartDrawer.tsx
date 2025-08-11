@@ -13,6 +13,7 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface CartDrawerProps {
   children: React.ReactNode;
@@ -135,9 +136,11 @@ export function CartDrawer({ children }: CartDrawerProps) {
                   Continue Shopping
                 </Button>
               </DrawerClose>
-              <Button className="flex-1 bg-gradient-warm hover:opacity-90" asChild>
-                <a href="/checkout">Proceed to Checkout</a>
-              </Button>
+              <DrawerClose asChild>
+                <Button className="flex-1 bg-gradient-warm hover:opacity-90" asChild>
+                  <Link to="/checkout">Proceed to Checkout</Link>
+                </Button>
+              </DrawerClose>
             </div>
           </DrawerFooter>
         )}
